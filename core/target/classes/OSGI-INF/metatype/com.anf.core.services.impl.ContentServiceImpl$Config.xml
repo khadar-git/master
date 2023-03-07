@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metatype:MetaData xmlns:metatype="http://www.osgi.org/xmlns/metatype/v1.2.0" localization="OSGI-INF/l10n/com.anf.core.services.impl.ContentServiceImpl$Config">
+  <OCD id="com.anf.core.services.impl.ContentServiceImpl$Config" name="ANF Code Challenge - Content Service Configuration" description="OSGI service providing configuration options for Content Service">
+    <AD id="age.config.path" type="String" name="Age Config Path" description="Node path that contains age configuration for validation" default="/etc/age"/>
+    <AD id="users.root.path" type="String" name="Users Root Path" description="Root path under which user details should be saved" default="/var/anf-code-challenge"/>
+  </OCD>
+  <Designate pid="com.anf.core.services.impl.ContentServiceImpl">
+    <Object ocdref="com.anf.core.services.impl.ContentServiceImpl$Config"/>
+  </Designate>
+</metatype:MetaData>

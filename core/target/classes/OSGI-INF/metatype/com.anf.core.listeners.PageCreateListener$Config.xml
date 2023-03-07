@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metatype:MetaData xmlns:metatype="http://www.osgi.org/xmlns/metatype/v1.2.0" localization="OSGI-INF/l10n/com.anf.core.listeners.PageCreateListener$Config">
+  <OCD id="com.anf.core.listeners.PageCreateListener$Config" name="ANF Code Challenge - Page Create Listener" description="OSGI service providing configuration options">
+    <AD id="filter" type="String" name="Page Filter Path" default="/content/anf-code-challenge/us/en"/>
+  </OCD>
+  <Designate pid="com.anf.core.listeners.PageCreateListener">
+    <Object ocdref="com.anf.core.listeners.PageCreateListener$Config"/>
+  </Designate>
+</metatype:MetaData>

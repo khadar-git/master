@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ContentServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ANF Code Challenge - Core</a> &gt; <a href="index.source.html" class="el_package">com.anf.core.services.impl</a> &gt; <span class="el_source">ContentServiceImpl.java</span></div><h1>ContentServiceImpl.java</h1><pre class="source lang-java linenums">package com.anf.core.services.impl;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import javax.jcr.Node;
+import javax.jcr.RepositoryException;
+import javax.jcr.Session;
+
+import org.apache.commons.lang3.StringUtils;
+import org.apache.jackrabbit.commons.JcrUtils;
+import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.LoginException;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.ResourceResolverFactory;
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.metatype.annotations.AttributeDefinition;
+import org.osgi.service.metatype.annotations.Designate;
+import org.osgi.service.metatype.annotations.ObjectClassDefinition;
+
+import com.anf.core.error.AppException;
+import com.anf.core.error.ErrorCode;
+import com.anf.core.model.AgeConfig;
+import com.anf.core.model.User;
+import com.anf.core.services.ContentService;
+import com.day.cq.search.PredicateGroup;
+import com.day.cq.search.Query;
+import com.day.cq.search.QueryBuilder;
+import com.day.cq.search.result.SearchResult;
+
+import lombok.extern.log4j.Log4j;
+
+@Component(
+        immediate = true,
+        service = ContentService.class)
+@Designate(
+        ocd = ContentServiceImpl.Config.class)
+<span class="nc" id="L44">@Log4j</span>
+<span class="nc" id="L45">public class ContentServiceImpl implements ContentService {</span>
+    
+    // OSGI configurations
+    @ObjectClassDefinition(
+            name = &quot;ANF Code Challenge - Content Service Configuration&quot;,
+            description = &quot;OSGI service providing configuration options for Content Service&quot;)
+    @interface Config {
+        
+        @AttributeDefinition(
+                name = &quot;Age Config Path&quot;,
+                description = &quot;Node path that contains age configuration for validation&quot;)
+        String age_config_path() default &quot;/etc/age&quot;;
+        
+        @AttributeDefinition(
+                name = &quot;Users Root Path&quot;,
+                description = &quot;Root path under which user details should be saved&quot;)
+        String users_root_path() default &quot;/var/anf-code-challenge&quot;;
+    }
+
+    @Reference
+    private ResourceResolverFactory resolverFactory;
+
+    private String ageConfigPath;
+    private String usersRootPath;
+
+    @Activate
+    protected void activate(Config config) {
+<span class="nc" id="L72">        this.ageConfigPath = config.age_config_path();</span>
+<span class="nc" id="L73">        this.usersRootPath = config.users_root_path();</span>
+<span class="nc" id="L74">    }</span>
+
+    /*
+     * (non-Javadoc)
+     * @see com.anf.core.services.ContentService#commitUserDetails(com.anf.core.model.User)
+     */
+    @Override
+    public void commitUserDetails(User user) throws RepositoryException, LoginException {
+        // Add your logic. Modify method signature as per need.
+
+        // validate inputs
+<span class="nc" id="L85">        validate(user);</span>
+
+        // commit user
+<span class="nc" id="L88">        commit(user);</span>
+<span class="nc" id="L89">    }</span>
+
+    private void validate(User user) {
+
+        // Considering all user fields as mandatory and throwing an error otherwise
+<span class="nc bnc" id="L94" title="All 4 branches missed.">        if (StringUtils.isEmpty(user.getFirstName()) || StringUtils.isEmpty(user.getLastName())</span>
+<span class="nc bnc" id="L95" title="All 2 branches missed.">                || StringUtils.isEmpty(user.getCountry())) {</span>
+<span class="nc" id="L96">            throw new AppException(ErrorCode.USER_FIELDS_MISSING);</span>
+        }
+
+<span class="nc" id="L99">        AgeConfig ageConfig = null;</span>
+        try {
+            
+            // Read age configuration for validation
+<span class="nc" id="L103">            ageConfig = getAgeConfig();</span>
+
+<span class="nc" id="L105">            int age = user.getAge();</span>
+
+            // throw an error if age is not within configured range
+<span class="nc bnc" id="L108" title="All 4 branches missed.">            if (age &lt; Integer.valueOf(ageConfig.getMinAge()) || age &gt; Integer.valueOf(ageConfig.getMaxAge())) {</span>
+<span class="nc" id="L109">                throw new AppException(ErrorCode.USER_AGE_INELIGIBLE);</span>
+            }
+            
+<span class="nc" id="L112">        } catch (RepositoryException | LoginException e) {</span>
+            // in case unable to access the age configuration node
+<span class="nc" id="L114">            log.error(&quot;Unable to read age configurations for validation&quot;, e);</span>
+<span class="nc" id="L115">            throw new AppException(ErrorCode.AGE_CONFIG_ISSUE);</span>
+<span class="nc" id="L116">        }</span>
+<span class="nc" id="L117">    }</span>
+
+    private AgeConfig getAgeConfig() throws RepositoryException, LoginException {
+
+        // Access the age config node and read min and max age values configured 
+<span class="nc" id="L122">        Node ageConfigNode = resolverFactory.getServiceResourceResolver(null)</span>
+<span class="nc" id="L123">                .getResource(ageConfigPath)</span>
+<span class="nc" id="L124">                .adaptTo(Node.class);</span>
+
+<span class="nc" id="L126">        return AgeConfig.builder()</span>
+<span class="nc" id="L127">                .minAge(ageConfigNode.getProperty(&quot;minAge&quot;)</span>
+<span class="nc" id="L128">                        .getString())</span>
+<span class="nc" id="L129">                .maxAge(ageConfigNode.getProperty(&quot;maxAge&quot;)</span>
+<span class="nc" id="L130">                        .getString())</span>
+<span class="nc" id="L131">                .build();</span>
+
+    }
+
+    private void commit(User user) throws RepositoryException, LoginException {
+
+        // Get session based on configured service user for this bundle
+<span class="nc" id="L138">        Session session = resolverFactory.getServiceResourceResolver(null)</span>
+<span class="nc" id="L139">                .adaptTo(Session.class);</span>
+
+        // Under user's root node, sub nodes are created based on first character
+        // of first name to organize user nodes better instead of creating all user nodes
+        // under single folder.
+<span class="nc" id="L144">        final String firstName = user.getFirstName()</span>
+<span class="nc" id="L145">                .toLowerCase();</span>
+<span class="nc" id="L146">        final char firstChar = firstName.charAt(0);</span>
+<span class="nc" id="L147">        Node usersRootNode = JcrUtils.getOrCreateByPath(usersRootPath + &quot;/&quot; + firstChar, &quot;sling:Folder&quot;,</span>
+                &quot;sling:OrderedFolder&quot;, session, true);
+
+        // Create user node using first name for easy readability with node repository.
+        // Numbered suffix will be automatically added when same first name is used e.g., john, john0, john1 etc.
+<span class="nc" id="L152">        Node userNode = JcrUtils.getOrCreateUniqueByPath(usersRootNode, firstName, &quot;nt:unstructured&quot;);</span>
+
+        // save user information as properties
+<span class="nc" id="L155">        userNode.setProperty(&quot;firstName&quot;, user.getFirstName());</span>
+<span class="nc" id="L156">        userNode.setProperty(&quot;lastName&quot;, user.getLastName());</span>
+<span class="nc" id="L157">        userNode.setProperty(&quot;country&quot;, user.getCountry());</span>
+<span class="nc" id="L158">        userNode.setProperty(&quot;age&quot;, user.getAge());</span>
+
+        // save changes
+<span class="nc" id="L161">        session.save();</span>
+<span class="nc" id="L162">    }</span>
+
+    /*
+     * (non-Javadoc)
+     * @see com.anf.core.services.ContentService#getExercise3PagesUsingQueryBuilder(org.apache.sling.api.SlingHttpServletRequest)
+     */
+    @Override
+    public List&lt;String&gt; getExercise3PagesUsingQueryBuilder(final SlingHttpServletRequest request)
+            throws RepositoryException {
+
+        // create query description as hash map (simplest way, same as form
+        // post)
+<span class="nc" id="L174">        Map&lt;String, String&gt; map = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L175">        map.put(&quot;path&quot;, &quot;/content&quot;);</span>
+<span class="nc" id="L176">        map.put(&quot;type&quot;, &quot;cq:Page&quot;);</span>
+<span class="nc" id="L177">        map.put(&quot;1_property&quot;, &quot;jcr:content/anfCodeChallenge&quot;);</span>
+<span class="nc" id="L178">        map.put(&quot;1_property.value&quot;, &quot;true&quot;);</span>
+<span class="nc" id="L179">        map.put(&quot;p.limit&quot;, &quot;10&quot;);</span>
+
+<span class="nc" id="L181">        final QueryBuilder queryBuilder = request.getResourceResolver()</span>
+<span class="nc" id="L182">                .adaptTo(QueryBuilder.class);</span>
+<span class="nc" id="L183">        final Session session = request.getResourceResolver()</span>
+<span class="nc" id="L184">                .adaptTo(Session.class);</span>
+
+        // create query and execute
+<span class="nc" id="L187">        final Query query = queryBuilder.createQuery(PredicateGroup.create(map), session);</span>
+<span class="nc" id="L188">        final SearchResult result = query.getResult();</span>
+
+<span class="nc" id="L190">        Node resultNode = null;</span>
+<span class="nc" id="L191">        List&lt;String&gt; pagePaths = new ArrayList&lt;&gt;();</span>
+        
+        // iterate through results and consolidate page paths
+<span class="nc bnc" id="L194" title="All 2 branches missed.">        if (null != result) {</span>
+<span class="nc" id="L195">            final Iterator&lt;Node&gt; nodeItr = result.getNodes();</span>
+<span class="nc bnc" id="L196" title="All 2 branches missed.">            while (nodeItr.hasNext()) {</span>
+<span class="nc" id="L197">                resultNode = nodeItr.next();</span>
+<span class="nc" id="L198">                pagePaths.add(resultNode.getPath());</span>
+            }
+        }
+
+<span class="nc" id="L202">        return pagePaths;</span>
+    }
+    
+    /*
+     * (non-Javadoc)
+     * @see com.anf.core.services.ContentService#getExercise3PagesUsingSQL2(org.apache.sling.api.SlingHttpServletRequest)
+     */
+    @Override
+    public List&lt;String&gt; getExercise3PagesUsingSQL2(final SlingHttpServletRequest request) {
+
+<span class="nc" id="L212">        final String queryString = &quot;SELECT parent.* FROM [cq:Page] AS parent \n&quot;</span>
+                + &quot;INNER JOIN [nt:base] AS child ON ISCHILDNODE(child,parent) \n&quot;
+                + &quot;WHERE ISDESCENDANTNODE(parent, '/content/anf-code-challenge/us/en') AND child.[anfCodeChallenge] = 'true'&quot;;
+
+<span class="nc" id="L216">        ResourceResolver resolver = request.getResourceResolver();</span>
+<span class="nc" id="L217">        Iterator&lt;Resource&gt; result = resolver.findResources(queryString, javax.jcr.query.Query.JCR_SQL2);</span>
+
+        // Alternatively this can be done using QueryManager API as well like shown below:
+        // Workspace workspace = session.getWorkspace();
+        // QueryManager queryManager = workspace.getQueryManager();
+        // Query query = queryManager.createQuery(&quot;{JCR-SQL2 query}&quot;, Query.JCR_SQL2);
+        // QueryResult result = query.execute();
+
+<span class="nc" id="L225">        List&lt;String&gt; pagePaths = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L226">        result.forEachRemaining(resource -&gt; pagePaths.add(resource.getPath()));</span>
+
+<span class="nc" id="L228">        return pagePaths;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

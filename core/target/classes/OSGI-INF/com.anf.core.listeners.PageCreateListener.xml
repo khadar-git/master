@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="com.anf.core.listeners.PageCreateListener" configuration-policy="optional" immediate="true" activate="activate">
+  <property name="filter" type="String" value="/content/anf-code-challenge/us/en"/>
+  <property name="event.topics" type="String" value="com/day/cq/wcm/core/page"/>
+  <service>
+    <provide interface="org.osgi.service.event.EventHandler"/>
+  </service>
+  <reference name="resolverFactory" interface="org.apache.sling.api.resource.ResourceResolverFactory" field="resolverFactory"/>
+  <implementation class="com.anf.core.listeners.PageCreateListener"/>
+</scr:component>
