@@ -1,1 +1,3 @@
 git commands
+
+1. git status - this command used to to know the status of the repository
