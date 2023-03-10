@@ -35,6 +35,9 @@ Or to deploy only the bundle to the author, run
 
     mvn clean install -PautoInstallBundle
 
+## git commands
+git branch this command used to know the current branch name
+git checkout <branch name> -switch to new branch
 ## Testing
 
 There are three levels of testing contained in the project:
