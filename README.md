@@ -38,6 +38,10 @@ Or to deploy only the bundle to the author, run
 ## git commands
 git branch this command used to know the current branch name
 git checkout <branch name> -switch to new branch
+
+
+mvn clean install the modues to build in project
+mvn clean install {Pautoinstallpackage to give package and deploy in running aem}
 ## Testing
 
 There are three levels of testing contained in the project:
