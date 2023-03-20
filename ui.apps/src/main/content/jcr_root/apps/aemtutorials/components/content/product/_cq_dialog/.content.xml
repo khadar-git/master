@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Product Basic Information"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <text
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Text"
+                sling:resourceType="granite/ui/components/foundation/section">
+                <layout
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/foundation/layouts/fixedcolumns"
+                    margin="{Boolean}false"/>
+                <items jcr:primaryType="nt:unstructured">
+                    <column
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <productTitile
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter Product Title"
+                                fieldLabel="Product Titile"
+                                name="./productTitle"
+                                useFixedInlineToolbar="{Boolean}true"/>
+                            <productDescription
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="/libs/granite/ui/components/coral/foundation/form/textarea"
+                                fieldDescription="Please enter product Description"
+                                fieldLabel="Product Description"
+                                name="./productDescription"
+                                useFixedInlineToolbar="{Boolean}true"/>
+                            <prdPrice
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Please enter Product Price"
+                                fieldLabel="Product Price"
+                                name="./productprice"
+                                required="{Boolean}true"
+                                useFixedInlineToolbar="{Boolean}true"/>
+                            <productImage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="/libs/granite/ui/components/coral/foundation/form/pathfield"
+                                fieldDescription="Please enter Product Image"
+                                fieldLabel="Product Image"
+                                name="./productImage"
+                                rootPath="/content/dam/aemtutorials"
+                                useFixedInlineToolbar="{Boolean}true"/>
+                        </items>
+                    </column>
+                </items>
+            </text>
+        </items>
+    </content>
+</jcr:root>
