@@ -2,28 +2,31 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
-        cq:lastModified="{Date}2023-03-23T08:03:23.280+05:30"
+        cq:lastModified="{Date}2023-03-24T10:55:59.366+05:30"
         cq:lastModifiedBy="admin"
         cq:template="/conf/aemtutorials/settings/wcm/templates/base-template"
         jcr:primaryType="cq:PageContent"
-        jcr:title="student form-1"
+        jcr:title="form style-4"
         sling:resourceType="aemtutorials/components/structure/page">
         <root
             jcr:lastModified="{Date}2020-07-06T00:00:22.773+05:30"
             jcr:lastModifiedBy="admin"
             jcr:primaryType="nt:unstructured"
             sling:resourceType="wcm/foundation/components/responsivegrid">
-            <student_form
-                jcr:created="{Date}2023-03-16T10:54:29.898+05:30"
+            <formstyle_4
+                jcr:created="{Date}2023-03-23T07:49:37.768+05:30"
                 jcr:createdBy="admin"
-                jcr:lastModified="{Date}2023-03-23T08:03:23.273+05:30"
+                jcr:lastModified="{Date}2023-03-23T07:49:37.768+05:30"
                 jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="aemtutorials/components/content/student_form"
-                studentage="28"
-                studentdescription="khadar is student student of jntuk&#xd;&#xa;"
-                studentimage="/content/dam/aemtutorials/shoee image.jpg"
-                studentname="khadar"/>
+                sling:resourceType="aemtutorials/components/content/formstyle_4"/>
+            <formstyle_7
+                jcr:created="{Date}2023-03-24T10:40:20.707+05:30"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2023-03-24T10:40:20.707+05:30"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="aemtutorials/components/content/formstyle_7"/>
         </root>
     </jcr:content>
 </jcr:root>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:lastModified="{Date}2023-03-21T11:16:55.913+05:30"
+        cq:lastModifiedBy="admin"
+        cq:template="/conf/aemtutorials/settings/wcm/templates/base-template"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="rich text page"
+        sling:resourceType="aemtutorials/components/structure/page">
+        <root
+            jcr:lastModified="{Date}2020-07-06T00:00:22.773+05:30"
+            jcr:lastModifiedBy="admin"
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="wcm/foundation/components/responsivegrid">
+            <richtext
+                jcr:created="{Date}2023-03-21T10:07:33.577+05:30"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2023-03-21T10:28:51.789+05:30"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="aemtutorials/components/content/richtext"
+                richtext="&lt;h2>Learn HTML Using Notepad or TextEdit&lt;/h2>&#xd;&#xa;&lt;p>Web pages can be created and modified by using professional HTML editors.&lt;/p>&#xd;&#xa;&lt;p>However, for learning HTML we recommend a simple text editor like Notepad (PC) or TextEdit (Mac).&lt;/p>&#xd;&#xa;&lt;p>We believe that using a simple text editor is a good way to learn &lt;a title=&quot;w3 school&quot; href=&quot;https://www.w3schools.com/html/html_editors.asp&quot; target=&quot;_blank&quot;>HTML&lt;/a>.&lt;/p>&#xd;&#xa;&lt;p>Follow the steps below to create your first web page with Notepad or TextEdit.&lt;/p>&#xd;&#xa;"
+                text="my html practice"
+                textIsRich="true"/>
+            <tab_component
+                jcr:created="{Date}2023-03-21T10:57:47.253+05:30"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2023-03-21T10:57:47.253+05:30"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="aemtutorials/components/content/tab_component"/>
+            <product
+                jcr:created="{Date}2023-03-21T11:16:55.912+05:30"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2023-03-21T11:16:55.912+05:30"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="aemtutorials/components/content/product"/>
+        </root>
+    </jcr:content>
+</jcr:root>

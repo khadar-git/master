@@ -2,7 +2,7 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
-        cq:lastModified="{Date}2023-03-20T10:04:16.666+05:30"
+        cq:lastModified="{Date}2023-03-22T08:45:16.696+05:30"
         cq:lastModifiedBy="admin"
         cq:template="/conf/aemtutorials/settings/wcm/templates/base-template"
         jcr:primaryType="cq:PageContent"
@@ -32,6 +32,16 @@
                 shoeimage="/content/dam/aemtutorials/shoee image.jpg"
                 text="cvdfbgiugou"
                 title="software"/>
+            <checkboxgroup
+                jcr:created="{Date}2023-03-20T10:36:09.597+05:30"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2023-03-22T08:45:16.681+05:30"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="aemtutorials/components/content/checkboxgroup"
+                pathfield="[/content/dam/aemtutorials/asset.jpg,/content/dam/aemtutorials/asset.jpg]"
+                pathfieldbrowser="/content/dam/we-retail/en/features/tracking.png"
+                select="TN"/>
         </root>
     </jcr:content>
 </jcr:root>
