@@ -1,22 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:rep="internal"
-          xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
-          jcr:mixinTypes="[rep:AccessControllable]"
-          jcr:primaryType="cq:Page">
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:rep="internal"
+    jcr:mixinTypes="[rep:AccessControllable]"
+    jcr:primaryType="cq:Page">
     <rep:policy/>
     <wcm jcr:primaryType="nt:unstructured">
         <foundation jcr:primaryType="nt:unstructured">
             <components jcr:primaryType="nt:unstructured">
                 <responsivegrid jcr:primaryType="nt:unstructured">
                     <policy_1593977909476
-                            jcr:lastModified="{Date}2020-07-06T01:09:11.945+05:30"
-                            jcr:lastModifiedBy="admin"
-                            jcr:primaryType="nt:unstructured"
-                            jcr:title="Base Page Ploicy"
-                            sling:resourceType="wcm/core/components/policy/policy"
-                            components="group:AEM Tutorials">
+                        jcr:lastModified="{Date}2020-07-06T01:09:11.945+05:30"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Base Page Ploicy"
+                        sling:resourceType="wcm/core/components/policy/policy"
+                        components="group:AEM Tutorials">
                         <jcr:content jcr:primaryType="nt:unstructured"/>
                     </policy_1593977909476>
+                    <policy_5638450027500
+                        jcr:lastModified="{Date}2023-04-03T20:20:21.457+05:30"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Policy1"
+                        sling:resourceType="wcm/core/components/policy/policy"
+                        components="group:AEM Tutorials">
+                        <jcr:content jcr:primaryType="nt:unstructured"/>
+                    </policy_5638450027500>
                 </responsivegrid>
             </components>
         </foundation>
