@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="nt:unstructured"
-    jcr:title="employee details for joining"
+    jcr:title="htl day1"
     sling:resourceType="cq/gui/components/authoring/dialog">
     <content
         jcr:primaryType="nt:unstructured"
@@ -26,7 +26,6 @@
                                 fieldDescription="ompany name description"
                                 fieldLabel="company"
                                 name="./companynamedescription"
-                                required="{Boolean}true"
                                 useFixedInlineToolbar="{Boolean}true"/>
                             <first-name
                                 jcr:primaryType="nt:unstructured"
@@ -34,7 +33,7 @@
                                 fieldDescription="first name description"
                                 fieldLabel="First Name"
                                 name="./firstname"
-                                required="{Boolean}true"
+                                required="{Boolean}false"
                                 useFixedInlineToolbar="{Boolean}true"/>
                             <last-name
                                 jcr:primaryType="nt:unstructured"
@@ -42,7 +41,7 @@
                                 fieldDescription="last name description"
                                 fieldLabel="Last Name"
                                 name="./lastname"
-                                required="{Boolean}true"
+                                required="{Boolean}false"
                                 useFixedInlineToolbar="{Boolean}true"/>
                             <Email-Address
                                 jcr:primaryType="nt:unstructured"
@@ -50,7 +49,7 @@
                                 fieldDescription="email address description"
                                 fieldLabel="Email Address"
                                 name="./emailaddress"
-                                required="{Boolean}true"
+                                required="{Boolean}false"
                                 useFixedInlineToolbar="{Boolean}true"/>
                             <Title
                                 jcr:primaryType="nt:unstructured"
@@ -138,7 +137,6 @@
                                 multiple="{Boolean}true"
                                 name="./shoeimage"
                                 sizeLimit="{Long}100"/>
-                            <file-upload/>
                         </items>
                     </column>
                 </items>

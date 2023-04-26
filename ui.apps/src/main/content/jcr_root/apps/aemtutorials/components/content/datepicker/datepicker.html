@@ -1,0 +1,21 @@
+<h1> datepicker<h1>
+${properties.datepicker}
+format1 : ${'yyyy-MM-dd' @ format=properties.datepicker} <br>
+
+format 2 : ${'yyyy-MM-dd' @ format=properties.datepicker, type='date'} <br>
+
+fromat 3 : ${'yyyy-MM-dd HH:mm' @ format=properties.datepicker, timezone='GMT+05:30'} <br>
+
+format 4 : ${'EEEE, dd MMMM yyyy' @ format=properties.datepicker, locale='fr'}
+
+<p>I am in PARA </p>
+
+<h1 data-sly-text="${properties.property1}"> Replace text ... </h1>
+
+<span class="ClassA""> </span>
+
+<div id="ClassA" data-sly-attribute.id="${properties.property1}"> DAT sly Attribute </div>
+
+<span data-sly-element="${'h1'}">Blah</span>
+
+<div data-sly-element="${'h2'}">Blah</div>

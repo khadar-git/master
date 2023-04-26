@@ -1,0 +1,91 @@
+<h1> HTL day2 practice <h1>
+
+
+${properties.number1}<br>
+
+${properties.string1}<br>
+
+${properties.number2}<br>
+
+${properties.string2}<br>
+
+${properties.array1}<br>
+
+
+logical operatots======<br>
+
+
+
+<sly data-sly-test="${properties.number1}">
+number2  :  ${properties.number1} ${properties.number2}
+
+</sly> <br><br>
+
+
+<sly data-sly-test="${!properties.number1}" >
+</sly><br>
+
+
+<sly data-sly-test="${properties.number1 && properties.number2 } ">
+show :  both numbers
+</sly><br>
+
+
+<sly data-sly-test="${ properties.string1 || properties.string2}">
+
+display :${properties.string1 } or ${properties.string2 }
+</sly><br>
+
+<h2> ternary operator <h2>
+
+<sly data-sly-test="${ properties.string1? properties.number1 :properties.number2 }">
+
+
+</sly><br>
+
+
+
+<h3> comparison operators<h3>
+
+<sly data-sly-test="${ 'number1==number2' }">
+
+</sly><br>
+
+<sly data-sly-test="${ 'satish'=='khadar' }">
+
+</sly><br>
+
+<sly data-sly-test="${ 10 >= 20}">
+
+show : Numbers less  than equal number2
+
+</sly> <br><br>
+
+<h4> relational operators<h4>
+
+
+<sly data-sly-test="${'s' in 'satish'} ">
+show s
+</sly><br>
+
+
+<sly data-sly-test="${'khadar' in 'satish'} ">
+show khadar
+
+</sly><br>
+
+
+<h5> Array operator<h5>
+
+Arrays from the dialog :::  ${properties.array1}
+
+<sly data-sly-test.arrayObject = ${properties.array1} />
+
+My Object : ${arrayObject}
+
+<sly data-sly-test="${100 in arrayObject } ">
+display :100
+</sly><br>
+
+
+

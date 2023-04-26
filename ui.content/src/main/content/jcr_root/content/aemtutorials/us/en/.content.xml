@@ -6,8 +6,9 @@
         cq:contextHubSegmentsPath="/etc/segmentation/contexthub"
         cq:template="/conf/aemtutorials/settings/wcm/templates/spa-app-template"
         jcr:primaryType="cq:PageContent"
-        jcr:title="en"
+        jcr:title="English"
         sling:resourceType="aemtutorials/components/spa"
+        myName="Khadar"
         pageTitle="AEM Tutorials">
         <root
             jcr:primaryType="nt:unstructured"
@@ -100,4 +101,13 @@
     <formstyle3/>
     <formstyle4/>
     <formsix/>
+    <footerdevelopment/>
+    <formstyle8/>
+    <formstyle9/>
+    <formstyle7/>
+    <formstyle12/>
+    <test3/>
+    <page1/>
+    <data-sly/>
+    <dataslyday_3/>
 </jcr:root>

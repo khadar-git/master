@@ -1,0 +1,45 @@
+<div data-sly-test = "${wcmmode.edit}" class="cq-placeholder" data-emptytext=" Edit Sly Day 5" ></div>
+
+<sly data-sly-set.myArray="${[1,2,3,4,5,6,77,88,99,100]}">
+
+My array :: ${myArray} <br>
+
+
+<sly data-sly-list.myObj="${myArray @ begin = 0 , step = 2,  end = 9 }">
+
+${myObj} <br>
+
+ index posstion :: ${myObjList.index} <br>
+
+</sly>
+=================================<br>
+
+
+<ul>
+<sly data-sly-list=${myArray}>
+
+item : ${item} Possition : ${itemList.index} : count : ${itemList.count} :: First : ${itemList.first} :: last : ${itemList.last}  :: middile : ${itemList.middle}<br>  
+
+<sly data-sly-test=${itemList.even}>
+
+  <li><li>items in even ::  ${item} <br> <li></li> 
+
+<sly>
+</sly>
+
+</ul>
+
+<br><br>
+
+<p data-sly-list=${myArray}>
+${item} <br>
+</p>
+
+<p data-sly-repeat=${myArray}>
+${item} <br>
+</p>
+
+
+
+
+

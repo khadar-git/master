@@ -1,0 +1,91 @@
+<h1> HTL Specification and Basics <h1>
+
+
+<sly data-sly-test="${properties.companynamedescription}">
+
+My name  : ${properties.firstname} ${properties.lastname}
+
+</sly> <br><br>
+
+
+<sly data-sly-test="${!properties.companynamedescription}">
+
+My name false  : ${properties.firstname} ${properties.lastname}
+
+</sly> <br><br>
+
+
+<sly data-sly-test="${ properties.firstname &&  properties.lastname }">
+
+Company name  :${properties.companynamedescription} 
+
+</sly>
+
+<br><br>
+
+
+<sly data-sly-test="${ properties.firstname ||  properties.lastname }">
+
+Email   :${properties.emailaddress} 
+
+</sly>
+<br><br>
+
+
+<h1> ternary Operator <h1>
+
+<p>  ${ properties.emailaddress ?  properties.firstname :   properties.lastname } </p>
+
+
+Equal Operator ::
+
+<sly data-sly-test="${ properties.firstname == properties.lastname}">
+
+Two Strings are equal
+
+</sly> <br><br>
+
+<sly data-sly-test="${ 'Satish' =='Khadar'}">
+
+Two Strings are equal Constants
+
+</sly> <br><br>
+
+<sly data-sly-test="${ 'Satish' !='Khadar'}">
+
+Two Strings are equal No Equal;
+
+</sly> <br><br>
+
+
+<sly data-sly-test="${ 10 < 20}">
+
+Numbers Greater or not
+
+</sly> <br><br>
+
+<sly data-sly-test="${ 'I' in 'India' }">
+
+I In India yes 
+
+</sly> <br><br>
+
+
+<sly data-sly-test="${ 10 in  [100, 200, 300, 400, 500] }">
+
+Array number is there or not 
+
+</sly>
+
+
+
+
+
+
+
+
+
+
+
+
+

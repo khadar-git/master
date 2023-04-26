@@ -1,0 +1,44 @@
+<div data-sly-test = "${wcmmode.edit}" class="cq-placeholder" data-emptytext=" Edit Sly Day 4" ></div>
+
+
+WCM ==>Web Content Management
+WCM ===> Edit , Preview , Disabled pr publish <br>
+
+Current Page Name ::  ${currentPage.name} <br>
+
+
+Current Page path ::  ${currentPage.path}  <br>
+
+Current Page title ::  ${currentPage.title}  <br>
+pr
+Current node properties ::  ${currentNode.properties}  <br>
+
+component :: ${component.componentGroup}
+
+
+
+
+<ul data-sly-list="${currentPage.listChildren}">
+
+    <li>${item.title}</li>
+
+</ul>
+
+
+<!--/* This is how the name of the 'item' identifier can be customised. */-->
+<ul data-sly-list.obj="${currentPage.listChildren}">
+
+    <li>${obj.title}</li>
+
+</ul>
+
+
+
+<ul data-sly-list="${currentPage.listChildren @ begin = 0, end = 2}">
+    <li>${item.title}</li>
+</ul>
+
+
+
+
+

@@ -1,0 +1,55 @@
+<sly data-sly-set.name="Satish" /> 
+
+
+<span data-sly-set.profile="${properties.property1}">Hello!</span>
+
+<span data-sly-test.varaible1="${properties.property2}">Hello!</span>
+
+
+Property 1 : ${properties.property1} <br>
+
+Property 2 : ${properties.property2}
+
+<h1>DATA-sly-Tesxt</h1><br>
+
+
+<p>This text would never be shown. HTML</p> <br>
+
+
+<p data-sly-text="${properties.property1}">This text would never be shown.</p> <br>
+
+<h1>DATA-sly-attribute</h1><br>
+
+<p class="blue" > Blue color HTML </p> <br>
+
+
+<p class="blue" data-sly-attribute.class="${properties.property1}"> Blue Color Sightly </p> <br>
+
+<span id="span" data-sly-attribute.id="${properties.property2}"> Blue Color Sightly SPAN </span> <br>
+
+<h2 id="H2" data-sly-attribute.id="${properties.property1}"> Blue Color Sightly  H2</h2> <br>
+
+<small class="blue" data-sly-attribute.class="${properties.property1}"> Blue Color Sightly small </small> <br>
+
+<h1>DAT sly element<h1> <br>
+
+
+<div>Blah</div>
+
+
+<div data-sly-element="${'h1'}">Blah</div>
+
+<span data-sly-element="${'small'}" data-sly-unwrap>Blah</span>
+
+
+<span data-sly-element="${'article'}" data-sly-unwrap>Blah</span>
+
+
+<div data-sly-test="${properties.property1}" data-sly-unwrap>UN WRAP </div> <br>
+
+
+NAME  ${name} <br> ${profile} <br>  ${varaible1}
+
+
+
+
