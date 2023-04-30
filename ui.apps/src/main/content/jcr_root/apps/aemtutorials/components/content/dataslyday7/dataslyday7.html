@@ -1,0 +1,47 @@
+<div data-sly-test = "${wcmmode.edit}" class="cq-placeholder" data-emptytext=" Edit Sly Day 7" ></div>
+
+
+<h1>data-sly-call !!</h1>
+
+<template data-sly-template.first>
+
+<h1>I am from Template of First<h1>
+<small>I am from SMALL</small>
+
+</template>
+
+// Parameters or arguments 
+
+
+
+<template data-sly-template.secound = "${@ x,y,z}">
+
+value of x = ${x} <br>
+value of y = ${y} <br>
+value of z = ${z} 
+
+</template>
+
+
+
+
+
+<h1>before data-sly-call !!</h1>
+
+<div data-sly-call ="${first}"></div>
+<div data-sly-call ="${first}"></div>
+<div data-sly-call ="${first}"></div>
+<div data-sly-call ="${first}"></div>
+
+
+<div data-sly-call ="${secound @ x=1 , y=2 , z=3}"></div>
+
+
+<div data-sly-call ="${secound @ x=500 , y=600 , z=700}"></div>
+
+
+<div data-sly-call ="${secound @ x=7 , y=8 , z=9}"></div>
+
+
+
+
