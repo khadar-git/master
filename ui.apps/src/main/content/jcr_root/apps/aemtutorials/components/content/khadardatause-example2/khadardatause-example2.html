@@ -1,0 +1,33 @@
+<div data-sly-test="${wcmmode.edit}"  class="cq-placeholder" data-emptytext = "edit khadar data sightly-9"> </div>
+
+<div data-sly-use.obj="khadar.js">
+
+
+     ${obj.int1}<br>
+     ${obj.int2}<br>
+     ${obj.total1}<br>
+     ${obj.string}<br>
+
+
+</div>  <br>
+
+<div data-sly-use.obj="satish.js">
+
+
+${obj.book1} <br>
+${obj.author1}  <br>
+${obj.price1}   <br>
+${obj.label1}   <br>
+
+
+
+
+</div> <br>
+
+<div data-sly-use.obj="${ '/apps/aemtutorials/components/content/useapi-example1/params.js' @ a=100 ,b=500}">
+
+
+ object from return :: ${obj.multy}
+
+
+</div>  <br>

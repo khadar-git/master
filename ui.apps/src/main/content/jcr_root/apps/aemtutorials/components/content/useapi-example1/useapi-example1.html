@@ -1,0 +1,36 @@
+<div data-sly-test.author ="${wcmmode.edit}"> Please edit Use API component hear </div>
+
+<div data-sly-use.data="use.js"> 
+
+
+    ${data.title1} <br>
+	 ${data.total}
+
+</div>
+
+<div data-sly-use.data="${'params.js' @ a=100 , b=5 }"> 
+
+    Multy ::   ${data.multy} <br>
+
+</div>
+
+
+<br>
+
+<div data-sly-use.obj="props.js"> 
+
+
+       <i> book ::   ${obj.props1}  </i> <br>
+       <i> author ::  ${obj.props2} </i><br>
+       <i> number 1 :: ${obj.props3} </i><br>
+       <i> number 2 :: ${obj.props4} </i>
+
+
+       <b> Addition of number1 ${obj.props3} and number2 ${obj.props4} is :: ${obj.total}  </b>
+
+       <br> Page path  :: ${obj.path}
+	   <br> Page Name  :: ${obj.name}
+
+</div>
+
+
